@@ -19,7 +19,9 @@ export default async function ProtectedLayout({
   return (
     <>
       <AdminHeader email={user.email} />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 pb-[calc(env(safe-area-inset-bottom)+2.5rem)] sm:py-8">
+        {children}
+      </main>
     </>
   );
 }

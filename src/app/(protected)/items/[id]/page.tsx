@@ -24,7 +24,10 @@ export default async function EditItemPage({
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <Link href="/" className="text-sm font-semibold text-[var(--coral)]">
+        <Link
+          href="/"
+          className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--coral)]"
+        >
           ← Back to items
         </Link>
         <h2 className="mt-2 text-2xl font-extrabold text-[var(--navy)]">

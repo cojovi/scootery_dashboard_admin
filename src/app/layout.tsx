@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 
@@ -11,6 +11,18 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "Scootery Menu Admin",
   description: "Manage The Scoop N Scootery digital signage menu",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Scootery Admin",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#1C3050",
 };
 
 export default function RootLayout({

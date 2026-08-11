@@ -14,7 +14,10 @@ export default async function NewItemPage({
     return (
       <div className="flex flex-col gap-6">
         <div>
-          <Link href="/" className="text-sm font-semibold text-[var(--coral)]">
+          <Link
+            href="/"
+            className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--coral)]"
+          >
             ← Back to items
           </Link>
           <h2 className="mt-2 text-2xl font-extrabold text-[var(--navy)]">
@@ -30,7 +33,7 @@ export default async function NewItemPage({
             <Link
               key={t}
               href={`/items/new?type=${t}`}
-              className="group rounded-xl border border-black/10 bg-white p-5 shadow-sm transition hover:border-[var(--coral)] hover:shadow-md"
+              className="group rounded-xl border border-black/10 bg-white p-5 shadow-sm transition hover:border-[var(--coral)] hover:shadow-md active:scale-[0.99] active:border-[var(--coral)]"
             >
               <h3 className="text-lg font-bold text-[var(--navy)] group-hover:text-[var(--coral)]">
                 {ITEM_TYPE_META[t].label}
@@ -50,7 +53,7 @@ export default async function NewItemPage({
       <div>
         <Link
           href="/items/new"
-          className="text-sm font-semibold text-[var(--coral)]"
+          className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--coral)]"
         >
           ← Choose a different type
         </Link>

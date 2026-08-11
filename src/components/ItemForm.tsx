@@ -49,7 +49,7 @@ export function ItemForm(props: Props) {
           name="name"
           required
           defaultValue={item?.name ?? ""}
-          className="rounded-md border border-black/15 bg-white px-3 py-2 outline-none focus:border-[var(--coral)]"
+          className="rounded-lg border border-black/15 bg-white px-3.5 py-3 text-base outline-none focus:border-[var(--coral)]"
         />
       </label>
 
@@ -59,7 +59,7 @@ export function ItemForm(props: Props) {
           name="description"
           rows={4}
           defaultValue={item?.description ?? ""}
-          className="rounded-md border border-black/15 bg-white px-3 py-2 outline-none focus:border-[var(--coral)]"
+          className="rounded-lg border border-black/15 bg-white px-3.5 py-3 text-base outline-none focus:border-[var(--coral)]"
         />
       </label>
 
@@ -75,7 +75,7 @@ export function ItemForm(props: Props) {
           type="file"
           accept="image/jpeg,image/png,image/webp,image/gif"
           required={props.mode === "create" && !imageOptional}
-          className="rounded-md border border-black/15 bg-white px-3 py-2"
+          className="rounded-lg border border-black/15 bg-white px-3.5 py-3 file:mr-3 file:rounded-md file:border-0 file:bg-[var(--navy)]/10 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-[var(--navy)]"
         />
       </label>
 
@@ -87,12 +87,12 @@ export function ItemForm(props: Props) {
         />
       ) : null}
 
-      <label className="flex items-center gap-2 rounded-md border border-black/10 bg-white px-3 py-3 text-sm font-medium">
+      <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-black/10 bg-white px-3.5 py-3.5 text-sm font-medium active:bg-black/[0.03]">
         <input
           type="checkbox"
           name="enabled"
           defaultChecked={item?.enabled ?? true}
-          className="size-4 accent-[var(--coral)]"
+          className="size-5 shrink-0 accent-[var(--coral)]"
         />
         <span>
           Enabled on TV
@@ -103,12 +103,12 @@ export function ItemForm(props: Props) {
       </label>
 
       {itemType === "menu" ? (
-        <label className="flex items-center gap-2 text-sm font-medium">
+        <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-black/10 bg-white px-3.5 py-3.5 text-sm font-medium active:bg-black/[0.03]">
           <input
             type="checkbox"
             name="featured"
             defaultChecked={item?.featured ?? false}
-            className="size-4"
+            className="size-5 shrink-0 accent-[var(--coral)]"
           />
           Today&apos;s Special (featured cinematic slide)
         </label>
@@ -123,7 +123,7 @@ export function ItemForm(props: Props) {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-md bg-[var(--coral)] px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
+        className="min-h-12 rounded-lg bg-[var(--coral)] px-4 text-base font-semibold text-white active:brightness-95 disabled:opacity-60"
       >
         {pending
           ? "Saving…"

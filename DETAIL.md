@@ -292,5 +292,19 @@ I also specifically instructed the coding agent to **preserve the existing signa
 - Social Media Post → white social-card on navy: logo avatar header, headline, optional screenshot, quoted review text
 - Special slides are interleaved evenly among menu slides; menu 2-up/3-up templates untouched
 
+## Session Notes (2026-08-11, evening) — Mobile / tablet / iOS polish
+
+### Decisions
+- Kept pinch-zoom enabled for accessibility; iOS input auto-zoom is prevented instead by forcing a 16px minimum font size on all inputs/selects/textareas (Safari only zooms when the field font is smaller than 16px)
+- All interactive controls meet Apple's 44pt minimum tap target (`min-h-11`/`min-h-12`, 44px drag handle) on touch layouts, relaxing to compact sizes at `sm`/`lg` breakpoints on desktop
+- Header is sticky with backdrop blur; nav scrolls horizontally on narrow phones instead of wrapping awkwardly; safe-area insets (`env(safe-area-inset-*)`) respected in header, body, and main padding for notched iPhones
+- Item list rows restack on phones: drag handle spans the full row height on the left, action buttons become a 3-column grid of full-width buttons, image shrinks to 64px; desktop (`lg+`) keeps the inline layout
+- `touch-action: manipulation` + transparent tap highlight on buttons/links/labels/inputs removes the 300ms double-tap delay and gray flash on iOS
+- Added `viewport-fit=cover`, `theme-color`, and Apple web-app metadata so the site behaves well when added to an iOS home screen
+- Form checkboxes upgraded to large card-style tap areas; submit buttons are 48px tall
+
+### Files touched
+- `src/app/layout.tsx` (viewport/theme/appleWebApp), `src/app/globals.css`, `src/components/AdminHeader.tsx`, `src/components/MenuItemList.tsx`, `src/components/ItemForm.tsx`, `src/components/LoginForm.tsx`, `src/app/(protected)/layout.tsx`, `src/app/(protected)/page.tsx`, `src/app/(protected)/items/new/page.tsx`, `src/app/(protected)/items/[id]/page.tsx`
+
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)

@@ -27,7 +27,7 @@ export default async function MenuListPage() {
         </div>
         <Link
           href="/items/new"
-          className="rounded-md bg-[var(--coral)] px-4 py-2 text-sm font-semibold text-white"
+          className="flex min-h-11 w-full items-center justify-center rounded-lg bg-[var(--coral)] px-4 text-sm font-semibold text-white active:brightness-95 sm:w-auto"
         >
           Add Item
         </Link>

@@ -39,7 +39,7 @@ export function LoginForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="rounded-md border border-black/15 bg-white px-3 py-2 text-base outline-none focus:border-[var(--coral)]"
+          className="rounded-lg border border-black/15 bg-white px-3.5 py-3 text-base outline-none focus:border-[var(--coral)]"
         />
       </label>
       <label className="flex flex-col gap-1 text-sm font-medium text-[var(--navy)]">
@@ -50,7 +50,7 @@ export function LoginForm() {
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="rounded-md border border-black/15 bg-white px-3 py-2 text-base outline-none focus:border-[var(--coral)]"
+          className="rounded-lg border border-black/15 bg-white px-3.5 py-3 text-base outline-none focus:border-[var(--coral)]"
         />
       </label>
       {error ? (
@@ -61,7 +61,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={loading}
-        className="rounded-md bg-[var(--coral)] px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-95 disabled:opacity-60"
+        className="min-h-12 rounded-lg bg-[var(--coral)] px-4 text-base font-semibold text-white transition hover:brightness-95 active:brightness-90 disabled:opacity-60"
       >
         {loading ? "Signing in…" : "Sign in"}
       </button>
