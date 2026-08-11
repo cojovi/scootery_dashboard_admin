@@ -256,7 +256,41 @@ It covers the complete build: two-repo architecture, Supabase schema/storage/aut
 
 I also specifically instructed the coding agent to **preserve the existing signage behavior and avoid unnecessarily rewriting your working dashboard**.
 
+## Session Notes (2026-08-11) — Admin portal implementation
 
+### Decisions followed from this document
+- Two separate GitHub repos sharing one Supabase backend
+- Public signage URL stays auto-rotating with no admin UI
+- Admin app: Next.js + Supabase Auth/CRUD/Storage
+- Signage polls menu data ~every 60s and caches last success in `localStorage`
+
+### What was built in this repo
+- Next.js admin app (`src/`) with login, item list, add/edit, enable/disable, reorder, featured, delete, image upload, live preview
+- Supabase migration: `supabase/migrations/20260811120000_create_menu_items.sql`
+- Seed SQL + JSON from current signage catalog: `supabase/seed/menu_items.sql`, `scripts/menu-seed-data.json`, `npm run seed`
+- Setup docs: `README.md`, `.env.example`
+
+### Supabase apply status
+- Cursor MCP project URL `ufqvyrhunubulaybzlfa.supabase.co` resolved as **NXDOMAIN** (project missing/unreachable); DB migrations could not be applied remotely from this session
+- Apply the migration SQL manually in a valid Supabase project, create an admin auth user, then set env vars (see README)
+
+### Companion signage changes
+- `scootery_dashboard` `index.html` now fetches enabled `menu_items`, falls back to embedded catalog + cache, and rebuilds slides on poll when data changes
+
+## Session Notes (2026-08-11, later) — Content types beyond menu items
+
+### Decisions
+- Added `item_type` column to `menu_items` (`menu` | `employee_photo` | `employee_of_month` | `social_post`), default `menu`; single-table approach keeps ordering, enable/disable, and polling unchanged
+- "Add Item" flow now starts with a type chooser; each type gets tailored form labels
+- Featured (Today's Special) applies to menu items only
+- Social posts may omit an image (text-only review renders as a quote card)
+- Enable/disable made prominent: checkbox per item, delete renamed "Delete forever"
+
+### Signage templates added (in scootery_dashboard)
+- Employee Photos → "Meet the Scoop Crew" polaroid collage, up to 3 photos per slide
+- Employee of the Month → spotlight slide: blurred photo backdrop, circular photo with coral ring, badge, name + recognition text
+- Social Media Post → white social-card on navy: logo avatar header, headline, optional screenshot, quoted review text
+- Special slides are interleaved evenly among menu slides; menu 2-up/3-up templates untouched
 
 ---
 Powered by [ChatGPT Exporter](https://www.chatgptexporter.com)
